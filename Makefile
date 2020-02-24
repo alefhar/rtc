@@ -18,17 +18,17 @@ INCLUDE = $(PROD_SRC_DIR)
 .PHONY: all
 all: $(PROD_OBJECTS)
 
-$(PROD_BUILD_DIR)/%.o: $(PROD_SRC_DIR)/*.cc
+$(PROD_BUILD_DIR)/%.o: $(PROD_SRC_DIR)/%.cc $(PROD_SRC_DIR)/%.h
 	@mkdir -p $(PROD_BUILD_DIR)
 	$(CC) $(CCFLAGS) -c $< -o $@
 
-$(TEST_BUILD_DIR)/%.o: $(TEST_SRC_DIR)/*.cc
+$(TEST_BUILD_DIR)/%.o: $(TEST_SRC_DIR)/%.cc
 	@mkdir -p $(TEST_BUILD_DIR)
 	$(CC) $(CCFLAGS) -I $(INCLUDE) -c $< -o $@ -lgtest
 
 .PHONY: test
 test: $(PROD_OBJECTS) $(TEST_OBJECTS)
-	$(CC) $(CCFLAGS) -I $(INCLUDE) $(PROD_OBJECTS) $(TEST_OBJECTS) -o test_suite -lgtest
+	$(CC) $(CCFLAGS) -o test_suite $(PROD_OBJECTS) $(TEST_OBJECTS) -lgtest
 	@./test_suite
 
 .PHONY: clean
