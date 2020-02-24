@@ -7,9 +7,12 @@ class vector : public euclidean
   public:
     vector(float x, float y, float z);
 
+    vector& operator+=(const vector& rhs);
+    
     friend vector operator+(vector lhs, const vector& rhs)
     {
-      return vector{lhs.x() + rhs.x(), lhs.y() + rhs.y(), lhs.z() + rhs.z()};
+      lhs += rhs;
+      return lhs;
     }
 };
 

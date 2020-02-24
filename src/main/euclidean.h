@@ -12,6 +12,10 @@ class euclidean
     float y() const;
     float z() const;
 
+    void x(float x);
+    void y(float y);
+    void z(float z);
+
     const tuple& get_tuple() const;
 
   protected:

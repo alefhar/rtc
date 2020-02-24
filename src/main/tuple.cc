@@ -26,6 +26,26 @@ float tuple::w() const
   return this->_w;
 }
 
+void tuple::x(float x)
+{
+  this->_x = x;
+}
+
+void tuple::y(float y)
+{
+  this->_y = y;
+}
+
+void tuple::z(float z)
+{
+  this->_z = z;
+}
+
+void tuple::w(float w)
+{
+  this->_w = w;
+}
+
 bool is_vector(const tuple &t)
 {
   return t.w() == 0.f;

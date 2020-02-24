@@ -17,6 +17,11 @@ class tuple
     float y() const;
     float z() const;
     float w() const;
+    
+    void x(float x);
+    void y(float y);
+    void z(float z);
+    void w(float w);
 };
 
 bool is_vector(const tuple &t);
