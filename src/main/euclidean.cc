@@ -19,3 +19,8 @@ float euclidean::z() const
 {
   return _tuple.z();
 }
+
+const tuple& euclidean::get_tuple() const
+{
+  return _tuple;
+}

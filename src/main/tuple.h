@@ -1,5 +1,7 @@
 #pragma once
 
+class euclidean;
+
 class tuple
 {
   private:
@@ -19,4 +21,9 @@ class tuple
 
 bool is_vector(const tuple &t);
 
+bool is_vector(const euclidean &e);
+
 bool is_point(const tuple &t);
+
+bool is_point(const euclidean &e);
+

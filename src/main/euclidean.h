@@ -12,6 +12,8 @@ class euclidean
     float y() const;
     float z() const;
 
+    const tuple& get_tuple() const;
+
   protected:
     euclidean(float x, float y, float z, float w);
 };
