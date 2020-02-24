@@ -1,8 +1,7 @@
-#ifndef RTC_TUPLE_H_
-#define RTC_TUPLE_H_
+#pragma once
 
-class tuple {
-
+class tuple
+{
   private:
     float _x;
     float _y;
@@ -21,5 +20,3 @@ class tuple {
 bool is_vector(const tuple &t);
 
 bool is_point(const tuple &t);
-
-#endif // RTC_TUPLE_H_

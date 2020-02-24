@@ -1,5 +1,4 @@
-#ifndef RTC_TUPLE_TEST_H_
-#define RTC_TUPLE_TEST_H_
+#pragma once
 
 #include "tuple.h"
 
@@ -28,5 +27,3 @@ TEST (tuple_test, tuple_is_vector)
   EXPECT_FALSE(is_point(a));
   EXPECT_TRUE(is_vector(a));
 }
-
-#endif // RTC_TUPLE_TEST_H_

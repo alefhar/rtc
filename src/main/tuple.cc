@@ -1,11 +1,8 @@
 #include "tuple.h"
 
 tuple::tuple(float x, float y, float z, float w)
+  : _x{x}, _y{y}, _z{z}, _w{w}
 {
-  this->_x = x;
-  this->_y = y;
-  this->_z = z;
-  this->_w = w;
 }
 
 float tuple::x() const
