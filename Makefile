@@ -21,7 +21,7 @@ test_files   := $(wildcard $(test_src_dir)/*.h)
 includes = $(prod_src_dir)
 
 .PHONY: all test clean
-all: $(prod_objects)
+all: test
 
 $(prod_build_dir)/%.o: $(prod_src_dir)/%.cc
 $(prod_build_dir)/%.o: $(prod_src_dir)/%.cc $(dependencies)/%.d | $(dependencies)
@@ -30,9 +30,6 @@ $(prod_build_dir)/%.o: $(prod_src_dir)/%.cc $(dependencies)/%.d | $(dependencies
 	@$(CXX) $(dep_flags) $(CXXFLAGS) -c $< -o $@
 
 $(dependencies): ; @mkdir -p $@
-
-dependency_files := $(patsubst $(prod_src_dir)/%.cc,$(dependencies)/%.d, $(wildcard $(prod_src_dir)/*.cc))
-$(dependency_files):
 
 $(test_build_dir)/%.o: $(test_src_dir)/%.cc $(dependencies)/%.d | $(dependencies)
 	@echo "compiling $<"
@@ -50,3 +47,11 @@ clean:
 	@rm -f test_suite
 	@rm -rf $(build_dir)
 	@rm -rf $(dependencies)
+
+prod_dep_files := $(patsubst $(prod_src_dir)/%.cc,$(dependencies)/%.d, $(wildcard $(prod_src_dir)/*.cc))
+$(prod_dep_files):
+test_dep_files := $(patsubst $(test_src_dir)/%.cc,$(dependencies)/%.d, $(wildcard $(test_src_dir)/*.cc))
+$(test_dep_files):
+
+include $(wildcard $(prod_dep_files))
+include $(wildcard $(test_dep_files))
