@@ -8,6 +8,9 @@ build_dir      = out
 prod_build_dir = $(build_dir)/main
 test_build_dir = $(build_dir)/test
 
+dependencies   := .dependencies
+dep_flags       = -MT $@ -MMD -MP -MF $(dependencies)/$*.d
+
 target = rtc
 
 prod_objects := $(patsubst $(prod_src_dir)/%.cc,$(prod_build_dir)/%.o, $(wildcard $(prod_src_dir)/*.cc))
@@ -15,23 +18,33 @@ test_objects := $(patsubst $(test_src_dir)/%.cc,$(test_build_dir)/%.o, $(wildcar
 
 includes = $(prod_src_dir)
 
-.PHONY: all
+.PHONY: all test clean
 all: $(prod_objects)
 
-$(prod_build_dir)/%.o: $(prod_src_dir)/%.cc $(prod_src_dir)/%.h
+$(prod_build_dir)/%.o: $(prod_src_dir)/%.cc
+$(prod_build_dir)/%.o: $(prod_src_dir)/%.cc $(dependencies)/%.d | $(dependencies)
+	@echo "compiling $<"
 	@mkdir -p $(prod_build_dir)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	@$(CXX) $(dep_flags) $(CXXFLAGS) -c $< -o $@
+
+$(dependencies): ; @mkdir -p $@
+
+dependency_files := $(patsubst $(prod_src_dir)/%.cc,$(dependencies)/%.d, $(wildcard $(prod_src_dir)/*.cc))
+$(dependency_files):
 
 $(test_build_dir)/%.o: $(test_src_dir)/%.cc
+	@echo "compiling $<"
 	@mkdir -p $(test_build_dir)
-	$(CXX) $(CXXFLAGS) -I $(includes) -c $< -o $@ -lgtest
+	@$(CXX) $(dep_flags) $(CXXFLAGS) -I $(includes) -c $< -o $@
 
-.PHONY: test
-test: $(prod_objects) $(test_objects)
-	$(CXX) $(CXXFLAGS) -o test_suite $(prod_objects) $(test_objects) -lgtest
+test_suite: $(prod_objects) $(test_objects) $(test_src_dir)/*.h
+	@echo "linking $@"
+	@$(CXX) $(CXXFLAGS) -o test_suite $(prod_objects) $(test_objects) -lgtest
+
+test: test_suite
 	@./test_suite
 
-.PHONY: clean
 clean:
-	rm -f test_suite
-	rm -rf $(build_dir)
+	@rm -f test_suite
+	@rm -rf $(build_dir)
+	@rm -rf $(dependencies)

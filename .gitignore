@@ -3,3 +3,6 @@
 
 # targets
 test_suite
+
+# dependencies
+.dependencies
