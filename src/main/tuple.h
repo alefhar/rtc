@@ -22,6 +22,14 @@ class tuple
     void y(float y);
     void z(float z);
     void w(float w);
+
+    tuple& operator+=(const tuple& rhs);
+
+    friend tuple operator+(tuple lhs, const tuple& rhs)
+    {
+      lhs += rhs;
+      return lhs;
+    }
 };
 
 bool is_vector(const tuple &t);

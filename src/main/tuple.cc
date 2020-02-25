@@ -46,6 +46,16 @@ void tuple::w(float w)
   this->_w = w;
 }
 
+tuple& tuple::operator+=(const tuple& rhs)
+{
+  this->_x += rhs.x();
+  this->_y += rhs.y();
+  this->_z += rhs.z();
+  this->_w += rhs.w();
+
+  return *this;
+}
+
 bool is_vector(const tuple &t)
 {
   return t.w() == 0.f;
