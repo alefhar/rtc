@@ -68,3 +68,43 @@ TEST (tuple_test, tuples_add)
   EXPECT_FLOAT_EQ(-2, t2.z());
   EXPECT_FLOAT_EQ( 1, t2.w());
 }
+
+TEST (tuple_test, tuples_equal)
+{
+  tuple t1(1, 2, 3, 4);
+  tuple t2(1, 2, 3, 4);
+
+  EXPECT_EQ(t1, t2);
+}
+
+TEST (tuple_test, tuples_not_equal_at_x)
+{
+  tuple t1(1, 2, 3, 4);
+  tuple t2(0, 2, 3, 4);
+
+  EXPECT_NE(t1, t2);
+}
+
+TEST (tuple_test, tuples_not_equal_at_y)
+{
+  tuple t1(1, 2, 3, 4);
+  tuple t2(1, 0, 3, 4);
+
+  EXPECT_NE(t1, t2);
+}
+
+TEST (tuple_test, tuples_not_equal_at_z)
+{
+  tuple t1(1, 2, 3, 4);
+  tuple t2(1, 2, 0, 4);
+
+  EXPECT_NE(t1, t2);
+}
+
+TEST (tuple_test, tuples_not_equal_at_w)
+{
+  tuple t1(1, 2, 3, 4);
+  tuple t2(1, 2, 3, 0);
+
+  EXPECT_NE(t1, t2);
+}

@@ -30,6 +30,16 @@ class tuple
       lhs += rhs;
       return lhs;
     }
+
+    friend bool operator==(const tuple& lhs, const tuple& rhs)
+    {
+      return lhs.x() == rhs.x() && lhs.y() == rhs.y() && lhs.z() == rhs.z() && lhs.w() == rhs.w();
+    }
+
+    friend bool operator!=(const tuple& lhs, const tuple& rhs)
+    {
+      return !(lhs == rhs);
+    }
 };
 
 bool is_vector(const tuple &t);
