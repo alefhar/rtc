@@ -4,7 +4,7 @@
 
 class euclidean
 {
-  private:
+  protected:
     tuple _tuple;
 
   public:

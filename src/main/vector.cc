@@ -7,8 +7,6 @@ vector::vector(float x, float y, float z)
 
 vector& vector::operator+=(const vector& rhs)
 {
-  x(x() + rhs.x());
-  y(y() + rhs.y());
-  z(z() + rhs.z());
+  this->_tuple += rhs._tuple;
   return *this;
 }
