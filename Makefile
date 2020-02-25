@@ -1,5 +1,5 @@
-CC=g++
-CCFLAGS=-std=c++17 -O3 -g -Wall -Wextra -pedantic
+CXX=g++
+CXXFLAGS=-std=c++17 -O3 -g -Wall -Wextra -pedantic
 
 SRC_DIR        = src
 PROD_SRC_DIR   = $(SRC_DIR)/main
@@ -20,15 +20,15 @@ all: $(PROD_OBJECTS)
 
 $(PROD_BUILD_DIR)/%.o: $(PROD_SRC_DIR)/%.cc $(PROD_SRC_DIR)/%.h
 	@mkdir -p $(PROD_BUILD_DIR)
-	$(CC) $(CCFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(TEST_BUILD_DIR)/%.o: $(TEST_SRC_DIR)/%.cc
 	@mkdir -p $(TEST_BUILD_DIR)
-	$(CC) $(CCFLAGS) -I $(INCLUDE) -c $< -o $@ -lgtest
+	$(CXX) $(CXXFLAGS) -I $(INCLUDE) -c $< -o $@ -lgtest
 
 .PHONY: test
 test: $(PROD_OBJECTS) $(TEST_OBJECTS)
-	$(CC) $(CCFLAGS) -o test_suite $(PROD_OBJECTS) $(TEST_OBJECTS) -lgtest
+	$(CXX) $(CXXFLAGS) -o test_suite $(PROD_OBJECTS) $(TEST_OBJECTS) -lgtest
 	@./test_suite
 
 .PHONY: clean
