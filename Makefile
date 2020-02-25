@@ -16,6 +16,8 @@ target = rtc
 prod_objects := $(patsubst $(prod_src_dir)/%.cc,$(prod_build_dir)/%.o, $(wildcard $(prod_src_dir)/*.cc))
 test_objects := $(patsubst $(test_src_dir)/%.cc,$(test_build_dir)/%.o, $(wildcard $(test_src_dir)/*.cc))
 
+test_files   := $(wildcard $(test_src_dir)/*.h)
+
 includes = $(prod_src_dir)
 
 .PHONY: all test clean
@@ -32,12 +34,12 @@ $(dependencies): ; @mkdir -p $@
 dependency_files := $(patsubst $(prod_src_dir)/%.cc,$(dependencies)/%.d, $(wildcard $(prod_src_dir)/*.cc))
 $(dependency_files):
 
-$(test_build_dir)/%.o: $(test_src_dir)/%.cc
+$(test_build_dir)/%.o: $(test_src_dir)/%.cc $(dependencies)/%.d | $(dependencies)
 	@echo "compiling $<"
 	@mkdir -p $(test_build_dir)
 	@$(CXX) $(dep_flags) $(CXXFLAGS) -I $(includes) -c $< -o $@
 
-test_suite: $(prod_objects) $(test_objects) $(test_src_dir)/*.h
+test_suite: $(prod_objects) $(test_objects) 
 	@echo "linking $@"
 	@$(CXX) $(CXXFLAGS) -o test_suite $(prod_objects) $(test_objects) -lgtest
 
