@@ -110,6 +110,23 @@ TEST (tuple_test, tuples_subtract)
   EXPECT_FLOAT_EQ( 1, t2.w());
 }
 
+TEST (tuple_test, tuple_negate)
+{
+  tuple t1(4, -1, 7, 0);
+
+  tuple t2 = -t1;
+
+  EXPECT_FLOAT_EQ(-4, t2.x());
+  EXPECT_FLOAT_EQ( 1, t2.y());
+  EXPECT_FLOAT_EQ(-7, t2.z());
+  EXPECT_FLOAT_EQ( 0, t2.w());
+  
+  EXPECT_FLOAT_EQ( 4, t1.x());
+  EXPECT_FLOAT_EQ(-1, t1.y());
+  EXPECT_FLOAT_EQ( 7, t1.z());
+  EXPECT_FLOAT_EQ( 0, t1.w());
+}
+
 TEST (tuple_test, tuples_equal)
 {
   tuple t1(1, 2, 3, 4);
