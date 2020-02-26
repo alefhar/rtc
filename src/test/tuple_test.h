@@ -69,6 +69,47 @@ TEST (tuple_test, tuples_add)
   EXPECT_FLOAT_EQ( 1, t2.w());
 }
 
+TEST (tuple_test, tuple_subtract_assign)
+{
+  tuple t1( 4, -1,  7, 0);
+  tuple t2(-1,  3, -2, 1);
+
+  t1 -= t2;
+
+  EXPECT_FLOAT_EQ( 5, t1.x());
+  EXPECT_FLOAT_EQ(-4, t1.y());
+  EXPECT_FLOAT_EQ( 9, t1.z());
+  EXPECT_FLOAT_EQ(-1, t1.w());
+  
+  EXPECT_FLOAT_EQ(-1, t2.x());
+  EXPECT_FLOAT_EQ( 3, t2.y());
+  EXPECT_FLOAT_EQ(-2, t2.z());
+  EXPECT_FLOAT_EQ( 1, t2.w());
+}
+
+TEST (tuple_test, tuples_subtract)
+{
+  tuple t1( 4, -1,  7, 0);
+  tuple t2(-1,  3, -2, 1);
+
+  tuple t3 = t1 - t2;
+
+  EXPECT_FLOAT_EQ( 5, t3.x());
+  EXPECT_FLOAT_EQ(-4, t3.y());
+  EXPECT_FLOAT_EQ( 9, t3.z());
+  EXPECT_FLOAT_EQ(-1, t3.w());
+
+  EXPECT_FLOAT_EQ( 4, t1.x());
+  EXPECT_FLOAT_EQ(-1, t1.y());
+  EXPECT_FLOAT_EQ( 7, t1.z());
+  EXPECT_FLOAT_EQ( 0, t1.w());
+  
+  EXPECT_FLOAT_EQ(-1, t2.x());
+  EXPECT_FLOAT_EQ( 3, t2.y());
+  EXPECT_FLOAT_EQ(-2, t2.z());
+  EXPECT_FLOAT_EQ( 1, t2.w());
+}
+
 TEST (tuple_test, tuples_equal)
 {
   tuple t1(1, 2, 3, 4);

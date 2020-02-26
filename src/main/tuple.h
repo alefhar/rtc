@@ -31,6 +31,14 @@ class tuple
       return lhs;
     }
 
+    tuple& operator-=(const tuple& rhs);
+
+    friend tuple operator-(tuple lhs, const tuple& rhs)
+    {
+      lhs -= rhs;
+      return lhs;
+    }
+
     friend bool operator==(const tuple& lhs, const tuple& rhs)
     {
       return lhs.x() == rhs.x() && lhs.y() == rhs.y() && lhs.z() == rhs.z() && lhs.w() == rhs.w();
