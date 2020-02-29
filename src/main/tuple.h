@@ -40,6 +40,13 @@ class tuple
 
     tuple operator-() const;
 
+    tuple& operator*=(float rhs);
+    friend tuple operator*(tuple lhs, float rhs)
+    {
+      lhs *= rhs;
+      return lhs;
+    }
+
     friend bool operator==(const tuple& lhs, const tuple& rhs)
     {
       return lhs.x() == rhs.x() && lhs.y() == rhs.y() && lhs.z() == rhs.z() && lhs.w() == rhs.w();

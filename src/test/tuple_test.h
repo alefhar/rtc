@@ -123,3 +123,17 @@ TEST (tuple_test, tuples_not_equal_at_w)
 
   EXPECT_NE(t1, t2);
 }
+
+TEST (tuple_test, multiply_scale_up)
+{
+  tuple t(1, -2, 3, -4);
+  
+  EXPECT_EQ(tuple(3.5, -7, 10.5, -14), t * 3.5);
+}
+
+TEST (tuple_test, multiply_scale_down)
+{
+  tuple t(1, -2, 3, -4);
+
+  EXPECT_EQ(tuple(0.5, -1, 1.5, -2), t * 0.5);
+}

@@ -75,6 +75,15 @@ tuple tuple::operator-() const
   return tuple{-this->_x, -this->_y, -this->_z, -this->_w};
 }
 
+tuple& tuple::operator*=(float rhs)
+{
+  this->_x *= rhs;
+  this->_y *= rhs;
+  this->_w *= rhs;
+  this->_z *= rhs;
+  return *this;
+}
+
 bool is_vector(const tuple &t)
 {
   return t.w() == 0.f;
