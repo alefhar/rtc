@@ -19,3 +19,37 @@ TEST (point_test, difference_of_points_is_vector)
 
   EXPECT_EQ(vector(-2, -4, -6), v);
 }
+
+TEST (point_test, add_assign_vector_to_point)
+{
+  point  p{3, 2, 1};
+  vector v{5, 6, 7};
+
+  p += v;
+
+  EXPECT_EQ(point(8, 8, 8), p);
+}
+
+TEST (point_test, add_vector_to_point)
+{
+  point  p{3, 2, 1};
+  vector v{5, 6, 7};
+
+  point p2 = p + v;
+
+  EXPECT_EQ(point(8, 8, 8), p2);
+  EXPECT_EQ(point(3, 2, 1), p);
+  EXPECT_EQ(vector(5, 6, 7), v);
+}
+
+TEST (point_test, add_point_to_vector)
+{
+  point  p{3, 2, 1};
+  vector v{5, 6, 7};
+
+  point p2 = v + p;
+
+  EXPECT_EQ(point(8, 8, 8), p2);
+  EXPECT_EQ(point(3, 2, 1), p);
+  EXPECT_EQ(vector(5, 6, 7), v);
+}

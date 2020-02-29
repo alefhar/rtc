@@ -58,4 +58,17 @@ class point : public euclidean
       tuple t = lhs.get_tuple() - rhs.get_tuple();
       return vector(t);
     }
+
+    point& operator+=(const vector& rhs);
+
+    friend point operator+(point lhs, const vector& rhs)
+    {
+      lhs += rhs;
+      return lhs;
+    }
+    
+    friend point operator+(const vector& lhs, point rhs)
+    {
+      return rhs + lhs;
+    } 
 };
