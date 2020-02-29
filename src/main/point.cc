@@ -10,3 +10,9 @@ point& point::operator+=(const vector& rhs)
   _tuple += rhs.get_tuple();
   return *this;
 }
+
+point& point::operator-=(const vector& rhs)
+{
+  _tuple -= rhs.get_tuple();
+  return *this;
+}

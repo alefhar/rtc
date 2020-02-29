@@ -75,4 +75,12 @@ class point : public euclidean
       lhs += rhs;
       return lhs;
     }
+    
+    point& operator-=(const vector& rhs);
+
+    friend point operator-(point lhs, const vector& rhs)
+    {
+      lhs -= rhs;
+      return lhs;
+    }
 };
