@@ -16,6 +16,11 @@ vector& vector::operator+=(const vector& rhs)
   return *this;
 }
 
+vector vector::operator-() const
+{
+  return vector{-_tuple};
+}
+
 vector& vector::operator-=(const vector& rhs)
 {
   this->_tuple -= rhs._tuple;

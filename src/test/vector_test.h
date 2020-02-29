@@ -59,3 +59,13 @@ TEST (vector_test, subtract_vectors)
   EXPECT_EQ(vector( 3, -2, 5), v1);
   EXPECT_EQ(vector(-2,  3, 1), v2);
 }
+
+TEST (vector_test, negate)
+{
+  vector v1{3, -4, 9};
+
+  vector v2 = -v1;
+
+  EXPECT_EQ(vector(-3,  4, -9), v2);
+  EXPECT_EQ(vector( 3, -4,  9), v1);
+}
