@@ -21,6 +21,16 @@ class euclidean
   protected:
     euclidean(float x, float y, float z, float w);
     euclidean(const tuple& t);
+    
+    friend bool operator==(const euclidean& lhs, const euclidean& rhs)
+    {
+      return lhs.get_tuple() == rhs.get_tuple();
+    }
+    
+    friend bool operator!=(const euclidean& lhs, const euclidean& rhs)
+    {
+      return !(lhs == rhs);
+    }
 };
 
 class vector : public euclidean
@@ -36,16 +46,6 @@ class vector : public euclidean
       lhs += rhs;
       return lhs;
     }
-
-    friend bool operator==(const vector& lhs, const vector& rhs)
-    {
-      return lhs.get_tuple() == rhs.get_tuple();
-    }
-    
-    friend bool operator!=(const vector& lhs, const vector& rhs)
-    {
-      return !(lhs == rhs);
-    }
 };
 
 class point : public euclidean
@@ -57,5 +57,5 @@ class point : public euclidean
     {
       tuple t = lhs.get_tuple() - rhs.get_tuple();
       return vector(t);
-    }    
+    }
 };
