@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vector.h"
+#include "euclidean.h"
 
 TEST (vector_test, vector_is_vector_tuple)
 {

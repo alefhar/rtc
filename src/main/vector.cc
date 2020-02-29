@@ -1,7 +1,12 @@
-#include "vector.h"
+#include "euclidean.h"
 
 vector::vector(float x, float y, float z)
   : euclidean(x, y, z, 0.f)
+{
+}
+
+vector::vector(tuple t)
+  : euclidean(t)
 {
 }
 

@@ -6,6 +6,11 @@ tuple::tuple(float x, float y, float z, float w)
 {
 }
 
+tuple::tuple(const tuple& t)
+  : _x{t._x}, _y{t._y}, _z{t._z}, _w{t._w}
+{
+}
+
 float tuple::x() const
 {
   return this->_x;

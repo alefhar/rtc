@@ -5,6 +5,11 @@ euclidean::euclidean(float x, float y, float z, float w)
 {
 }
 
+euclidean::euclidean(const tuple& t)
+  : _tuple{t}
+{
+}
+
 float euclidean::x() const
 {
   return _tuple.x();

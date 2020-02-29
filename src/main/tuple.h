@@ -12,6 +12,7 @@ class tuple
 
   public:
     tuple(float x, float y, float z, float w);
+    tuple(const tuple& t);
 
     float x() const;
     float y() const;
