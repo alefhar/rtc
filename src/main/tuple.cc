@@ -1,5 +1,4 @@
 #include "tuple.h"
-#include "euclidean.h"
 
 tuple::tuple(float x, float y, float z, float w)
   : _x{x}, _y{y}, _z{z}, _w{w}
