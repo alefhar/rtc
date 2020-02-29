@@ -49,3 +49,26 @@ TEST (vector_test, add_vectors)
   EXPECT_EQ( 3, v2.y());
   EXPECT_EQ( 1, v2.z());
 }
+
+TEST (vector_test, subtract_assign)
+{
+  vector v1{ 3, -2, 5};
+  vector v2{-2,  3, 1};
+
+  v1 -= v2;
+
+  EXPECT_EQ(vector( 5, -5, 4), v1);
+  EXPECT_EQ(vector(-2,  3, 1), v2);
+}
+
+TEST (vector_test, subtract_vectors)
+{
+  vector v1{ 3, -2, 5};
+  vector v2{-2,  3, 1};
+
+  vector v3 = v1 - v2;
+
+  EXPECT_EQ(vector( 5, -5, 4), v3);
+  EXPECT_EQ(vector( 3, -2, 5), v1);
+  EXPECT_EQ(vector(-2,  3, 1), v2);
+}

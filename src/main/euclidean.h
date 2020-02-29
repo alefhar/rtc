@@ -21,7 +21,8 @@ class euclidean
   protected:
     euclidean(float x, float y, float z, float w);
     euclidean(const tuple& t);
-    
+
+  public:    
     friend bool operator==(const euclidean& lhs, const euclidean& rhs)
     {
       return lhs.get_tuple() == rhs.get_tuple();
@@ -44,6 +45,14 @@ class vector : public euclidean
     friend vector operator+(vector lhs, const vector& rhs)
     {
       lhs += rhs;
+      return lhs;
+    }
+
+    vector& operator-=(const vector& rhs);
+
+    friend vector operator-(vector lhs, const vector& rhs)
+    {
+      lhs -= rhs;
       return lhs;
     }
 };
