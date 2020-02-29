@@ -86,3 +86,7 @@ class point : public euclidean
       return lhs;
     }
 };
+
+bool is_vector(const euclidean &e);
+
+bool is_point(const euclidean &e);

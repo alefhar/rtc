@@ -44,3 +44,13 @@ const tuple& euclidean::get_tuple() const
 {
   return _tuple;
 }
+
+bool is_vector(const euclidean &e)
+{
+  return is_vector(e.get_tuple());
+}
+
+bool is_point(const euclidean &e)
+{
+  return is_point(e.get_tuple());
+}

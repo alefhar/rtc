@@ -81,17 +81,7 @@ bool is_vector(const tuple &t)
   return t.w() == 0.f;
 }
 
-bool is_vector(const euclidean &e)
-{
-  return is_vector(e.get_tuple());
-}
-
 bool is_point(const tuple &t)
 {
   return t.w() == 1.f;
-}
-
-bool is_point(const euclidean &e)
-{
-  return is_point(e.get_tuple());
 }
