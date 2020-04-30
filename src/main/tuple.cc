@@ -84,6 +84,15 @@ tuple& tuple::operator*=(float rhs)
   return *this;
 }
 
+tuple& tuple::operator/=(float rhs)
+{
+  this->_x /= rhs;
+  this->_y /= rhs;
+  this->_z /= rhs;
+  this->_w /= rhs;
+  return *this;
+}
+
 bool is_vector(const tuple &t)
 {
   return t.w() == 0.f;

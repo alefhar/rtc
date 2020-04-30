@@ -51,6 +51,13 @@ class tuple
       return lhs;
     }
 
+    tuple& operator/=(float rhs);
+    friend tuple operator/(tuple lhs, float rhs)
+    {
+      lhs /= rhs;
+      return lhs;
+    }
+
     friend bool operator==(const tuple& lhs, const tuple& rhs)
     {
       return std::abs(lhs.x() - rhs.x()) < EPS
