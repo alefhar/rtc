@@ -1,5 +1,9 @@
 #pragma once
 
+#include "constants.h"
+
+#include <cmath>
+
 class tuple
 {
   private:
@@ -49,7 +53,10 @@ class tuple
 
     friend bool operator==(const tuple& lhs, const tuple& rhs)
     {
-      return lhs.x() == rhs.x() && lhs.y() == rhs.y() && lhs.z() == rhs.z() && lhs.w() == rhs.w();
+      return std::abs(lhs.x() - rhs.x()) < EPS
+        && std::abs(lhs.y() - rhs.y()) < EPS
+        && std::abs(lhs.z() - rhs.z()) < EPS
+        && std::abs(lhs.w() - rhs.w()) < EPS;
     }
 
     friend bool operator!=(const tuple& lhs, const tuple& rhs)
