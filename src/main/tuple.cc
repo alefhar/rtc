@@ -93,12 +93,12 @@ tuple& tuple::operator/=(float rhs)
   return *this;
 }
 
-bool is_vector(const tuple &t)
+bool tuple::is_vector() const
 {
-  return t.w() == 0.f;
+  return _w == 0.f;
 }
 
-bool is_point(const tuple &t)
+bool tuple::is_point() const
 {
-  return t.w() == 1.f;
+  return _w == 1.f;
 }

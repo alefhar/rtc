@@ -8,8 +8,8 @@ TEST (vector_test, vector_is_vector_tuple)
 {
   vector v{4, -4, 3};
 
-  EXPECT_TRUE(is_vector(v));
-  EXPECT_FALSE(is_point(v));
+  EXPECT_TRUE(v.is_vector());
+  EXPECT_FALSE(v.is_point());
 }
 
 TEST (vector_test, add_assign)
@@ -20,7 +20,7 @@ TEST (vector_test, add_assign)
   v1 += v2;
 
   EXPECT_EQ(vector(1, 1, 6), v1);
-  EXPECT_TRUE(is_vector(v1));
+  EXPECT_TRUE(v1.is_vector());
 
   EXPECT_EQ(vector(-2, 3, 1), v2);
 }
@@ -33,7 +33,7 @@ TEST (vector_test, add_vectors)
   vector v3 = v1 + v2;
 
   EXPECT_EQ(vector(1, 1, 6), v3);
-  EXPECT_TRUE(is_vector(v3));
+  EXPECT_TRUE(v3.is_vector());
 
   EXPECT_EQ(vector( 3, -2, 5), v1);
   EXPECT_EQ(vector(-2,  3, 1), v2);
@@ -104,4 +104,25 @@ TEST (vector_test, magnitude_all_negative)
   vector v{-1, -2, -3};
 
   EXPECT_FLOAT_EQ(v.magnitude(), std::sqrt(14));
+}
+
+TEST (vector_test, multiply_scale_up)
+{
+  vector v(1, -2, 3);
+ 
+  EXPECT_EQ(vector(tuple(3.5, -7, 10.5, 0.)), v * 3.5);
+}
+
+TEST (vector_test, multiply_scale_down)
+{
+  vector v(1, -2, 3);
+
+  EXPECT_EQ(vector(tuple(0.5, -1, 1.5, 0.)), v * 0.5);
+}
+
+TEST (vector_test, divide)
+{
+  vector p(1, -2, 3);
+
+  EXPECT_EQ(vector(tuple(0.5, -1, 1.5, 0)), p / 2);
 }

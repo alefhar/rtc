@@ -11,8 +11,8 @@ TEST (tuple_test, tuple_is_point)
   EXPECT_FLOAT_EQ( 3.1, a.z());
   EXPECT_FLOAT_EQ( 1.0, a.w());
 
-  EXPECT_TRUE(is_point(a));
-  EXPECT_FALSE(is_vector(a));
+  EXPECT_TRUE(a.is_point());
+  EXPECT_FALSE(a.is_vector());
 }
 
 TEST (tuple_test, tuple_is_vector)
@@ -24,8 +24,8 @@ TEST (tuple_test, tuple_is_vector)
   EXPECT_FLOAT_EQ( 3.1, a.z());
   EXPECT_FLOAT_EQ( 0.0, a.w());
   
-  EXPECT_FALSE(is_point(a));
-  EXPECT_TRUE(is_vector(a));
+  EXPECT_FALSE(a.is_point());
+  EXPECT_TRUE(a.is_vector());
 }
 
 TEST (tuple_test, tuple_add_assign)

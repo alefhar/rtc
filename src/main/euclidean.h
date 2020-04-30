@@ -2,25 +2,28 @@
 
 #include "tuple.h"
 
-class euclidean
+template <class T> class euclidean
 {
   protected:
     tuple _tuple;
 
   public:
-    float x() const;
-    float y() const;
-    float z() const;
+    float x() const { return _tuple.x(); };
+    float y() const { return _tuple.y(); };
+    float z() const { return _tuple.z(); };
 
-    void x(float x);
-    void y(float y);
-    void z(float z);
+    void x(float x) { _tuple.x(x); };
+    void y(float y) { _tuple.y(y); };
+    void z(float z) { _tuple.z(z); };
 
-    const tuple& get_tuple() const;
+    const tuple& get_tuple() const { return _tuple; };
+
+    bool is_point() const { return _tuple.is_point(); };
+    bool is_vector() const { return _tuple.is_vector(); };
 
   protected:
-    euclidean(float x, float y, float z, float w);
-    euclidean(const tuple& t);
+    euclidean(float x, float y, float z, float w) : _tuple{x, y, z, w} {};
+    euclidean(const tuple& t) : _tuple{t} {};
 
   public:
     friend bool operator==(const euclidean& lhs, const euclidean& rhs)
@@ -32,13 +35,30 @@ class euclidean
     {
       return !(lhs == rhs);
     }
+
+    T operator-() const
+    {
+      return T{-_tuple.x(), -_tuple.y(), -_tuple.z()};
+    }
+ 
+    friend T operator*(T lhs, float rhs)
+    {
+      tuple t = lhs.get_tuple();
+      return T{t * rhs};
+    }
+
+    friend T operator/(T lhs, float rhs)
+    {
+      tuple t = lhs.get_tuple();
+      return T{t / rhs};
+    }
 };
 
-class vector : public euclidean
+class vector : public euclidean<vector>
 {
   public:
     vector(float x, float y, float z);
-    vector(tuple t);
+    vector(const tuple& t);
 
     vector& operator+=(const vector& rhs);
     
@@ -47,8 +67,6 @@ class vector : public euclidean
       lhs += rhs;
       return lhs;
     }
-
-    vector operator-() const;
 
     vector& operator-=(const vector& rhs);
 
@@ -61,10 +79,11 @@ class vector : public euclidean
     float magnitude();
 };
 
-class point : public euclidean
+class point : public euclidean<point>
 {
   public:
     point(float x, float y, float z);
+    point(const tuple& t);
 
     friend vector operator-(const point& lhs, const point& rhs)
     {
@@ -89,6 +108,3 @@ class point : public euclidean
     }
 };
 
-bool is_vector(const euclidean &e);
-
-bool is_point(const euclidean &e);

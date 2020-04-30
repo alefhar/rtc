@@ -5,6 +5,11 @@ point::point(float x, float y, float z)
 {
 }
 
+point::point(const tuple& t)
+  : euclidean(t)
+{
+}
+
 point& point::operator+=(const vector& rhs)
 {
   _tuple += rhs.get_tuple();

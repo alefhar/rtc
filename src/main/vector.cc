@@ -5,7 +5,7 @@ vector::vector(float x, float y, float z)
 {
 }
 
-vector::vector(tuple t)
+vector::vector(const tuple& t)
   : euclidean(t)
 {
 }
@@ -16,10 +16,10 @@ vector& vector::operator+=(const vector& rhs)
   return *this;
 }
 
-vector vector::operator-() const
-{
-  return vector{-_tuple};
-}
+// vector vector::operator-() const
+// {
+//   return vector{-_tuple};
+// }
 
 vector& vector::operator-=(const vector& rhs)
 {

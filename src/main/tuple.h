@@ -25,6 +25,9 @@ class tuple
     void y(float y);
     void z(float z);
     void w(float w);
+    
+    bool is_vector() const;
+    bool is_point() const;
 
     tuple& operator+=(const tuple& rhs);
 
@@ -72,6 +75,3 @@ class tuple
     }
 };
 
-bool is_vector(const tuple &t);
-
-bool is_point(const tuple &t);
