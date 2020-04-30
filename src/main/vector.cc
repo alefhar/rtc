@@ -26,3 +26,11 @@ vector& vector::operator-=(const vector& rhs)
   this->_tuple -= rhs._tuple;
   return *this;
 }
+
+float vector::magnitude()
+{
+  return std::sqrt(
+      x() * x() +
+      y() * y() +
+      z() * z());
+}

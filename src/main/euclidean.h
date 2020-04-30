@@ -57,6 +57,8 @@ class vector : public euclidean
       lhs -= rhs;
       return lhs;
     }
+
+    float magnitude();
 };
 
 class point : public euclidean
