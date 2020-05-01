@@ -30,6 +30,7 @@ class tuple
     bool is_point() const;
 
     float magnitude() const;
+    tuple normalize() const;
 
     tuple& operator+=(const tuple& rhs);
 

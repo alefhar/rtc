@@ -29,5 +29,5 @@ float vector::magnitude() const
 
 vector vector::normalize() const
 {
-  return *this / magnitude();
+  return vector(_tuple.normalize());
 }

@@ -114,3 +114,7 @@ float tuple::magnitude() const
       this->_w * this->_w);
 }
 
+tuple tuple::normalize() const
+{
+  return *this / magnitude();
+}
