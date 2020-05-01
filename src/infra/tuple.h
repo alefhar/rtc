@@ -26,9 +26,6 @@ class tuple
     void z(float z);
     void w(float w);
     
-    bool is_vector() const;
-    bool is_point() const;
-
     float magnitude() const;
     tuple normalize() const;
 

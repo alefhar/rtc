@@ -95,16 +95,6 @@ tuple& tuple::operator/=(float rhs)
   return *this;
 }
 
-bool tuple::is_vector() const
-{
-  return _w == 0.f;
-}
-
-bool tuple::is_point() const
-{
-  return _w == 1.f;
-}
-
 float tuple::magnitude() const
 {
   return std::sqrt(

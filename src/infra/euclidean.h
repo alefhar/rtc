@@ -21,8 +21,8 @@ template <class T> class euclidean
 
     const tuple& get_tuple() const { return _tuple; };
 
-    bool is_point() const { return _tuple.is_point(); };
-    bool is_vector() const { return _tuple.is_vector(); };
+    bool is_point() const { return _tuple.w() == 1.f; };
+    bool is_vector() const { return _tuple.w() == 0.f; };
 
   protected:
     euclidean(float x, float y, float z, float w) : _tuple{x, y, z, w} {};
