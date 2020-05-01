@@ -24,10 +24,7 @@ vector& vector::operator-=(const vector& rhs)
 
 float vector::magnitude() const
 {
-  return std::sqrt(
-      x() * x() +
-      y() * y() +
-      z() * z());
+  return this->_tuple.magnitude();
 }
 
 vector vector::normalize() const

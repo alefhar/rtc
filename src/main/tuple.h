@@ -29,6 +29,8 @@ class tuple
     bool is_vector() const;
     bool is_point() const;
 
+    float magnitude() const;
+
     tuple& operator+=(const tuple& rhs);
 
     friend tuple operator+(tuple lhs, const tuple& rhs)

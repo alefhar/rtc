@@ -1,5 +1,7 @@
 #include "tuple.h"
 
+#include <cmath>
+
 tuple::tuple(float x, float y, float z, float w)
   : _x{x}, _y{y}, _z{z}, _w{w}
 {
@@ -102,3 +104,13 @@ bool tuple::is_point() const
 {
   return _w == 1.f;
 }
+
+float tuple::magnitude() const
+{
+  return std::sqrt(
+      this->_x * this->_x +
+      this->_y * this->_y +
+      this->_z * this->_z +
+      this->_w * this->_w);
+}
+
