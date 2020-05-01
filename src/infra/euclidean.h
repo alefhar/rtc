@@ -2,6 +2,9 @@
 
 #include "tuple.h"
 
+#include <iostream>
+#include <string>
+
 template <class T> class euclidean
 {
   protected:
@@ -52,6 +55,12 @@ template <class T> class euclidean
       tuple t = lhs.get_tuple();
       return T{t / rhs};
     }
+
+    friend std::ostream& operator<<(std::ostream& out, const T& rhs)
+    {
+      out << rhs.type() << ": (" << rhs.x() << "," << rhs.y() << "," << rhs.z() << ")";
+      return out;
+    }
 };
 
 class vector : public euclidean<vector>
@@ -81,6 +90,8 @@ class vector : public euclidean<vector>
 
     float dot(const vector& v) const;
     vector cross(const vector& v) const;
+
+    std::string type() const { return "vector"; };
 };
 
 class point : public euclidean<point>
@@ -110,5 +121,7 @@ class point : public euclidean<point>
       lhs -= rhs;
       return lhs;
     }
+    
+    std::string type() const { return "point"; };
 };
 
