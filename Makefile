@@ -2,10 +2,10 @@ CXX=g++
 CXXFLAGS=-std=c++17 -O3 -g -Wall -Wextra -pedantic
 
 src_dir        = src
-prod_src_dir   = $(src_dir)/main
+prod_src_dir   = $(src_dir)/infra
 test_src_dir   = $(src_dir)/test
 build_dir      = out
-prod_build_dir = $(build_dir)/main
+prod_build_dir = $(build_dir)/infra
 test_build_dir = $(build_dir)/test
 
 dependencies   := .dependencies
