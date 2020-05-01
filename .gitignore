@@ -3,6 +3,7 @@
 
 # targets
 test_suite
+cannon
 
 # dependencies
 .dependencies
