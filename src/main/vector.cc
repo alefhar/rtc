@@ -16,21 +16,21 @@ vector& vector::operator+=(const vector& rhs)
   return *this;
 }
 
-// vector vector::operator-() const
-// {
-//   return vector{-_tuple};
-// }
-
 vector& vector::operator-=(const vector& rhs)
 {
   this->_tuple -= rhs._tuple;
   return *this;
 }
 
-float vector::magnitude()
+float vector::magnitude() const
 {
   return std::sqrt(
       x() * x() +
       y() * y() +
       z() * z());
+}
+
+vector vector::normalize() const
+{
+  return *this / magnitude();
 }

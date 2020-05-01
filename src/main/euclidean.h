@@ -76,7 +76,9 @@ class vector : public euclidean<vector>
       return lhs;
     }
 
-    float magnitude();
+    float magnitude() const;
+
+    vector normalize() const;
 };
 
 class point : public euclidean<point>

@@ -122,7 +122,28 @@ TEST (vector_test, multiply_scale_down)
 
 TEST (vector_test, divide)
 {
-  vector p(1, -2, 3);
+  vector v(1, -2, 3);
 
-  EXPECT_EQ(vector(tuple(0.5, -1, 1.5, 0)), p / 2);
+  EXPECT_EQ(vector(tuple(0.5, -1, 1.5, 0)), v / 2);
+}
+
+TEST (vector_test, normalize_single_component)
+{
+  vector v(4, 0, 0);
+
+  EXPECT_EQ(vector(1, 0, 0), v.normalize());
+}
+
+TEST (vector_test, normalize_all_components)
+{
+  vector v(1, 2, 3);
+
+  EXPECT_EQ(vector(0.26726f, 0.53452, 0.80178), v.normalize());
+}
+
+TEST (vector_test, magnitude_of_normalized_vector_is_one)
+{
+  vector v(1, 2, 3);
+  
+  EXPECT_FLOAT_EQ(1, v.normalize().magnitude());
 }
