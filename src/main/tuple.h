@@ -32,6 +32,8 @@ class tuple
     float magnitude() const;
     tuple normalize() const;
 
+    float dot(const tuple& t) const;
+
     tuple& operator+=(const tuple& rhs);
 
     friend tuple operator+(tuple lhs, const tuple& rhs)

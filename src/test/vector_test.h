@@ -147,3 +147,11 @@ TEST (vector_test, magnitude_of_normalized_vector_is_one)
   
   EXPECT_FLOAT_EQ(1, v.normalize().magnitude());
 }
+
+TEST (vector_test, dot_product)
+{
+  vector v1(1, 2, 3);
+  vector v2(2, 3, 4);
+
+  EXPECT_FLOAT_EQ(20, v1.dot(v2));
+}

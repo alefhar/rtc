@@ -118,3 +118,8 @@ tuple tuple::normalize() const
 {
   return *this / magnitude();
 }
+    
+float tuple::dot(const tuple& t) const
+{
+  return _x * t.x() + _y * t.y() + _z * t.z() + _w * t.w();
+}

@@ -31,3 +31,8 @@ vector vector::normalize() const
 {
   return vector(_tuple.normalize());
 }
+    
+float vector::dot(const vector& v) const
+{
+  return _tuple.dot(v.get_tuple());
+}

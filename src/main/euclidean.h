@@ -77,8 +77,9 @@ class vector : public euclidean<vector>
     }
 
     float magnitude() const;
-
     vector normalize() const;
+
+    float dot(const vector& v) const;
 };
 
 class point : public euclidean<point>
