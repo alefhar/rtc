@@ -21,7 +21,7 @@ test_files   := $(wildcard $(test_src_dir)/*.h)
 includes = $(prod_src_dir)
 
 .PHONY: all test clean
-all: test
+all: test_suite
 
 $(prod_build_dir)/%.o: $(prod_src_dir)/%.cc
 $(prod_build_dir)/%.o: $(prod_src_dir)/%.cc $(dependencies)/%.d | $(dependencies)
