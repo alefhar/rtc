@@ -80,6 +80,7 @@ class vector : public euclidean<vector>
     vector normalize() const;
 
     float dot(const vector& v) const;
+    vector cross(const vector& v) const;
 };
 
 class point : public euclidean<point>

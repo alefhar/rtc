@@ -36,3 +36,11 @@ float vector::dot(const vector& v) const
 {
   return _tuple.dot(v.get_tuple());
 }
+
+vector vector::cross(const vector& v) const
+{
+  float x = _tuple.y() * v.get_tuple().z() - _tuple.z() * v.get_tuple().y();
+  float y = _tuple.z() * v.get_tuple().x() - _tuple.x() * v.get_tuple().z();
+  float z = _tuple.x() * v.get_tuple().y() - _tuple.y() * v.get_tuple().x();
+  return vector{x, y, z};
+}

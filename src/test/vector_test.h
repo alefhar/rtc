@@ -155,3 +155,12 @@ TEST (vector_test, dot_product)
 
   EXPECT_FLOAT_EQ(20, v1.dot(v2));
 }
+
+TEST (vector_test, cross_product)
+{
+  vector v1(1, 2, 3);
+  vector v2(2, 3, 4);
+
+  EXPECT_EQ(vector(-1, 2, -1), v1.cross(v2));
+  EXPECT_EQ(vector(1, -2, 1), v2.cross(v1));
+}
