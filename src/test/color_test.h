@@ -26,3 +26,17 @@ TEST (color_test, subtract_colors)
 
   EXPECT_EQ(color(0.2, 0.5, 0.5), c1 - c2);
 }
+
+TEST (color_test, multiply_with_scalar)
+{
+  color c{0.2, 0.3, 0.4};
+
+  EXPECT_EQ(color(0.4, 0.6, 0.8), c * 2);
+}
+
+TEST (color_test, multiply_with_scalar_commutative)
+{
+  color c{0.2, 0.3, 0.4};
+
+  EXPECT_EQ(color(0.4, 0.6, 0.8), 2 * c);
+}

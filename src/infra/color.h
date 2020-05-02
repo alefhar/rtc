@@ -29,6 +29,19 @@ class color
       lhs -= rhs;
       return lhs;
     }
+    
+    color& operator*=(float rhs);
+    friend color operator*(color lhs, float rhs)
+    {
+      lhs *= rhs;
+      return lhs;
+    }
+
+    friend color operator*(float lhs, color rhs)
+    {
+      rhs *= lhs;
+      return rhs;
+    }
 
     bool operator==(const color& rhs) const;
     bool operator!=(const color& rhs) const;

@@ -20,6 +20,12 @@ color& color::operator-=(const color& rhs)
   return *this;
 }
 
+color& color::operator*=(float rhs)
+{
+  _tuple *= rhs;
+  return *this;
+}
+
 bool color::operator==(const color& rhs) const
 {
   return _tuple == rhs._tuple;
