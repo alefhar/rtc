@@ -40,3 +40,10 @@ TEST (color_test, multiply_with_scalar_commutative)
 
   EXPECT_EQ(color(0.4, 0.6, 0.8), 2 * c);
 }
+
+TEST (color_test, schur_product) {
+  color c1{1.0, 0.2, 0.4};
+  color c2{0.9, 1.0, 0.1};
+
+  EXPECT_EQ(color(0.9, 0.2, 0.04), c1 * c2);
+}

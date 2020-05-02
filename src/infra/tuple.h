@@ -32,7 +32,6 @@ class tuple
     float dot(const tuple& t) const;
 
     tuple& operator+=(const tuple& rhs);
-
     friend tuple operator+(tuple lhs, const tuple& rhs)
     {
       lhs += rhs;
@@ -40,7 +39,6 @@ class tuple
     }
 
     tuple& operator-=(const tuple& rhs);
-
     friend tuple operator-(tuple lhs, const tuple& rhs)
     {
       lhs -= rhs;
@@ -51,6 +49,13 @@ class tuple
 
     tuple& operator*=(float rhs);
     friend tuple operator*(tuple lhs, float rhs)
+    {
+      lhs *= rhs;
+      return lhs;
+    }
+
+    tuple& operator*=(const tuple& rhs);
+    friend tuple operator*(tuple lhs, const tuple& rhs)
     {
       lhs *= rhs;
       return lhs;

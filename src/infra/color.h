@@ -43,6 +43,13 @@ class color
       return rhs;
     }
 
+    color& operator*=(const color& rhs);
+    friend color operator*(color lhs, const color& rhs)
+    {
+      lhs *= rhs;
+      return lhs;
+    }
+
     bool operator==(const color& rhs) const;
     bool operator!=(const color& rhs) const;
 };

@@ -86,6 +86,16 @@ tuple& tuple::operator*=(float rhs)
   return *this;
 }
 
+tuple& tuple::operator*=(const tuple& rhs)
+{
+  this->_x *= rhs.x();
+  this->_y *= rhs.y();
+  this->_z *= rhs.z();
+  this->_w *= rhs.w();
+
+  return *this;
+}
+
 tuple& tuple::operator/=(float rhs)
 {
   this->_x /= rhs;
