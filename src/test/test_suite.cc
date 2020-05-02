@@ -4,6 +4,7 @@
 #include "point_test.h"
 #include "vector_test.h"
 #include "color_test.h"
+#include "canvas_test.h"
 
 int main(int argc, char **argv)
 {
