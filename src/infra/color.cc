@@ -14,6 +14,12 @@ color& color::operator+=(const color& rhs)
   return *this;
 }
 
+color& color::operator-=(const color& rhs)
+{
+  _tuple -= rhs._tuple;
+  return *this;
+}
+
 bool color::operator==(const color& rhs) const
 {
   return _tuple == rhs._tuple;
