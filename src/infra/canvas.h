@@ -2,6 +2,8 @@
 
 #include "color.h"
 
+#include <ar/image.h>
+
 #include <vector>
 
 class canvas
@@ -17,6 +19,8 @@ class canvas
 
     std::size_t width() const { return _width; };
     std::size_t height() const { return _height; };
+
+    argon::image<std::int32_t> to_image() const;
 
     const color& operator()(std::size_t x, std::size_t y) const;
     color& operator()(std::size_t x, std::size_t y);
