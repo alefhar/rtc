@@ -1,4 +1,7 @@
 #include "euclidean.h"
+#include "canvas.h"
+
+#include <ar/image_io.h>
 
 #include <iostream>
 #include <cstdlib>
@@ -32,6 +35,7 @@ int main(int argc, char** args) {
     return 1;
   }
 
+  canvas canvas{900, 550};
   point position = point{component(1, args), component(2, args), component(3, args)};
   vector velocity = vector{component(4, args), component(5, args), component(6, args)};
   projectile p = projectile{position, velocity};
@@ -46,9 +50,14 @@ int main(int argc, char** args) {
 
   while (p.position.y() > 0) {
     p = tick(p, e);
-    std::cout << "projectile: position = " << p.position << ", velocity = " << p.velocity << std::endl;
+    std::size_t x = static_cast<std::size_t>(p.position.x());
+    std::size_t y = static_cast<std::size_t>(p.position.y());
+    if (x >= 0 && x < 900 && y >= 0 && y < 550)
+      canvas(x, y) = color(0.75, 0.75, 0.75);
   }
 
+  argon::image_io::write("trajectory.ppm", canvas.to_image(), argon::pnm_type::PPM_BINARY);
+  
   return 0;
 }
 

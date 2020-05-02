@@ -50,7 +50,7 @@ test_suite: $(infra_objects) $(test_objects)
 
 cannon: $(main_build_dir)/cannon.o $(infra_objects)
 	@echo "linking $@"
-	@$(CXX) $(CXXFLAGS) -o cannon $< $(infra_objects)
+	@$(CXX) $(CXXFLAGS) -o cannon $< $(infra_objects) -largon
 
 test: test_suite
 	@./test_suite
