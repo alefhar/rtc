@@ -82,6 +82,12 @@ class matrix {
       return !(lhs == rhs);
     }
 
+    matrix operator*=(const matrix& rhs);
+    friend matrix operator*(matrix lhs, const matrix& rhs)
+    {
+      return lhs *= rhs;
+    }
+
   private:
     void check_dimension(std::size_t x, std::size_t y) const;
 };

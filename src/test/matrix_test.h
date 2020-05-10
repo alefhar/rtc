@@ -132,3 +132,54 @@ TEST (matrix_test, inequality_2x2)
 
   EXPECT_NE(m1, m2);
 }
+
+TEST (matrix_test, multiply_4x4)
+{
+  matrix m1 = mat4(1, 2, 3, 4,
+                   5, 6, 7, 8,
+                   9, 8, 7, 6,
+                   5, 4, 3, 2);
+
+  matrix m2 = mat4(-2, 1, 2,  3,
+                    3, 2, 1, -1,
+                    4, 3, 6,  5,
+                    1, 2, 7,  8);
+
+  matrix r = m1 * m2;
+  
+  EXPECT_EQ(mat4(20, 22,  50,  48,
+                 44, 54, 114, 108,
+                 40, 58, 110, 102,
+                 16, 26,  46,  42), r);
+}
+
+TEST (matrix_test, multiply_3x3)
+{
+  matrix m1 = mat3(1, 2, 3,
+                   5, 6, 7,
+                   9, 8, 7);
+
+  matrix m2 = mat3(-2, 1, 2,
+                    3, 2, 1,
+                    4, 3, 6);
+
+  matrix r = m1 * m2;
+  
+  EXPECT_EQ(mat3(16, 14, 22,
+                 36, 38, 58,
+                 34, 46, 68), r);
+}
+
+TEST (matrix_test, multiply_2x2)
+{
+  matrix m1 = mat2(1, 2,
+                   5, 6);
+
+  matrix m2 = mat2(-2, 1,
+                    3, 2);
+
+  matrix r = m1 * m2;
+  
+  EXPECT_EQ(mat2(4,  5, 
+                 8, 17), r);
+}
