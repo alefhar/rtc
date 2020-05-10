@@ -5,6 +5,7 @@
 #include "vector_test.h"
 #include "color_test.h"
 #include "canvas_test.h"
+#include "matrix_test.h"
 
 int main(int argc, char **argv)
 {
