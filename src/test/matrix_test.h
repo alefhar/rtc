@@ -54,3 +54,81 @@ TEST (matrix_test, construct_2x2)
   EXPECT_FLOAT_EQ(m.m21(),  1);
   EXPECT_FLOAT_EQ(m.m22(), -2);
 }
+
+TEST (matrix_test, equality_4x4)
+{
+  matrix m1 = mat4(1, 2, 3, 4,
+                   5, 6, 7, 8,
+                   9, 8, 7, 6,
+                   5, 4, 3, 2); 
+
+  matrix m2 = mat4(1, 2, 3, 4,
+                   5, 6, 7, 8,
+                   9, 8, 7, 6,
+                   5, 4, 3, 2); 
+
+  EXPECT_EQ(m1, m2);
+}
+
+TEST (matrix_test, equality_3x3)
+{
+  matrix m1 = mat3(1, 2, 3,
+                   5, 6, 7,
+                   9, 8, 7);
+
+  matrix m2 = mat3(1, 2, 3,
+                   5, 6, 7,
+                   9, 8, 7);
+
+  EXPECT_EQ(m1, m2);
+}
+
+TEST (matrix_test, equality_2x2)
+{
+  matrix m1 = mat2(1, 2,
+                   5, 6);
+
+  matrix m2 = mat2(1, 2,
+                   5, 6);
+
+  EXPECT_EQ(m1, m2);
+}
+
+TEST (matrix_test, inequality_4x4)
+{
+  matrix m1 = mat4(1, 2, 3, 4,
+                   5, 6, 7, 8,
+                   9, 8, 7, 6,
+                   5, 4, 3, 2); 
+
+  matrix m2 = mat4(2, 3, 4, 5,
+                   6, 7, 8, 9,
+                   8, 7, 6, 5,
+                   4, 3, 2, 1); 
+
+  EXPECT_NE(m1, m2);
+}
+
+TEST (matrix_test, inequality_3x3)
+{
+  matrix m1 = mat3(1, 2, 3,
+                   5, 6, 7,
+                   9, 8, 7);
+
+  matrix m2 = mat3(2, 3, 4,
+                   6, 7, 8,
+                   8, 7, 6);
+
+  EXPECT_NE(m1, m2);
+}
+
+TEST (matrix_test, inequality_2x2)
+{
+  matrix m1 = mat2(1, 2,
+                   5, 6);
+
+  matrix m2 = mat2(2, 3,
+                   6, 7);
+
+  EXPECT_NE(m1, m2);
+}
